@@ -5,13 +5,17 @@ class Myconnession:
 
     def __init__(self, host, user, database):
         self.connection=None
-        self.connection=mysql.connector.connect(host=host, user=user, passwd=getpass.getpass(), port="3306", database=database)
+        try:
+            self.connection=mysql.connector.connect(host=host, user=user, passwd=getpass.getpass(), port="3306", database=database)
+        except mysql.connector.errors as er:
+            print("ERRORE!")
+            print(er)
     
     def use_querry(self, query):
         try:
             cursor=self.connection.cursor()
             cursor.execute(query)
-        except mysql.connector.errors as er:
+        except mysql.connector.errors:
             print("ERRORE!")
         else:
             return cursor.fetchall()
