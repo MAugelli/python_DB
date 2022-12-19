@@ -1,5 +1,5 @@
 from connetion import FilmDB
-import getpass
+
 
 test=FilmDB("localhost", "root", "sakila")
 test.get_all_film()
