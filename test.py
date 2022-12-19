@@ -1,6 +1,7 @@
 from connetion import FilmDB
+import getpass
 
-test=FilmDB()
+test=FilmDB("localhost", "root", "sakila")
 test.get_all_film()
 print("\n" + "-"*40 + "\n")
 test.get_actor_film("PENELOPE","GUINESS")
