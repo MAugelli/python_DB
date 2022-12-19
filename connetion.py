@@ -5,10 +5,10 @@ class Myconnession:
 
     def __init__(self):
         self.connection=None
-        self.connection=mysql.connector.connect(host = "localhost" , user = "root" , passwd = getpass.getpass() ,port="3306",database="sakila" )
+        self.connection=mysql.connector.connect(host="localhost", user="root", passwd=getpass.getpass(), port="3306", database="sakila")
     
     def use_querry(self, query):
-        cursor = self.connection.cursor()
+        cursor=self.connection.cursor()
         cursor.execute(query)
         return cursor.fetchall()
     
@@ -28,7 +28,7 @@ class FilmDB(Myconnession):
         
     def get_actor_film(self, first_name, last_name):
         result=self.use_querry(f"select title from actor inner join film_actor on actor.actor_id=film_actor.actor_id inner join film on film_actor.film_id=film.film_id where actor.first_name=\"{first_name}\" and actor.last_name=\"{last_name}\"")
-        print(f"I film dove recita {first_name} {last_name}")
+        print(f"I film dove recita {first_name} {last_name} sono:")
         for i in result:
             print(f"{i[0]}") 
             
